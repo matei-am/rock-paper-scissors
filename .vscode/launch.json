@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run RockPaperScissors (terminal)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/RockPaperScissors",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "MIMode": "lldb",
+      "preLaunchTask": "build"
+    }
+  ]
+}
