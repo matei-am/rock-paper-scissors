@@ -17,5 +17,6 @@ FetchContent_Declare(
 )
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
+
 add_executable(RockPaperScissors ${SOURCE_FILES})
 target_include_directories(RockPaperScissors PRIVATE include)

@@ -9,7 +9,9 @@ class Player{
     void addDraw();
     void displayStats();
     void ResetStats();
-    
+    int getWinCount();
+    int getLoseCount();
+    int getDrawCount();
     Move getPlayerMove();
     Move getComputerMove();
 };

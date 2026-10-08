@@ -79,6 +79,20 @@ void Player::addDraw()
 {
     drawCount++;
 }
+int Player::getWinCount()
+{
+    return winCount;
+}
+
+int Player::getLoseCount()
+{
+    return loseCount;
+}
+
+int Player::getDrawCount()
+{
+    return drawCount;
+}
 void Player::displayStats()
 {
     cout << "You have " << winCount << " Wins" << endl;
