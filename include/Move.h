@@ -1,12 +1,10 @@
-#include <iostream>
-
 enum class Move {
     ROCK,
     PAPER,
     SCISSORS
 };
 
-enum class result {
+enum class outcome {
     WIN,
     LOSE,
     DRAW
@@ -14,6 +12,6 @@ enum class result {
 
 class Result{
     public:
-    result determineResult(Move playerMove, Move computerMove);
-    void displayResult(result gameResult);
+    outcome determineResult(Move playerMove, Move computerMove);
+    void displayResult(outcome gameResult);
 };

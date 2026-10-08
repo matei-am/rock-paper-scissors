@@ -49,30 +49,56 @@ Move Player::getComputerMove()
     }
 }
 
-result Result::determineResult(Move playerMove, Move computerMove)
+outcome Result::determineResult(Move playerMove, Move computerMove)
 {
     if (playerMove == computerMove)
     {
-        return result::DRAW;
+        return outcome::DRAW;
     }
     else if ((playerMove == Move::ROCK && computerMove == Move::SCISSORS) ||
              (playerMove == Move::PAPER && computerMove == Move::ROCK) ||
              (playerMove == Move::SCISSORS && computerMove == Move::PAPER))
     {
-        return result::WIN;
+        return outcome::WIN;
     }
     else
     {
-        return result::LOSE;
+        return outcome::LOSE;
     }
 }
-void Result::displayResult(result gameResult)
+
+void Player::addWin()
 {
-    if (gameResult == result::WIN)
+    winCount++;
+}
+void Player::addLose()
+{
+    loseCount++;
+}
+void Player::addDraw()
+{
+    drawCount++;
+}
+void Player::displayStats()
+{
+    cout << "You have " << winCount << " Wins" << endl;
+    cout << "You have " << loseCount << " Losses" << endl;
+    cout << "You have " << drawCount << " Draws" << endl;
+}
+void Player::ResetStats()
+{
+    winCount = 0;
+    loseCount = 0;
+    drawCount = 0;
+}
+
+void Result::displayResult(outcome gameResult)
+{
+    if (gameResult == outcome::WIN)
     {
         cout << "You win!" << endl;
     }
-    else if (gameResult == result::LOSE)
+    else if (gameResult == outcome::LOSE)
     {
         cout << "You lose!" << endl;
     }

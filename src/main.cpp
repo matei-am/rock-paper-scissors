@@ -5,15 +5,9 @@
 using namespace std;
 
 int main() {
-    Player player;
-    Player computer;
-
-    Move playerMove = player.getPlayerMove();
-    Move computerMove = player.getComputerMove();
-
-    Result resultObj;
-    result gameResult = resultObj.determineResult(playerMove, computerMove);
-    resultObj.displayResult(gameResult);
+    Game game;
+    game.startGame();
+    game.playGame();
 
     return 0;
 }

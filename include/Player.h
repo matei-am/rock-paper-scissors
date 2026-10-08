@@ -1,20 +1,15 @@
-
 class Player{
     int winCount=0;
     int loseCount=0;
     int drawCount=0;
-    void addWin() {
-        winCount++;
-    }
 
-    void addLose() {
-        loseCount++;
-    }
-
-    void addDraw() {
-        drawCount++;
-    }
     public:
+    void addWin();
+    void addLose();
+    void addDraw();
+    void displayStats();
+    void ResetStats();
+    
     Move getPlayerMove();
     Move getComputerMove();
 };
