@@ -8,7 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(SOURCE_FILES
     src/GameEngine.cpp
     src/main.cpp
-    src/Move.cpp
+    src/Player.cpp
 )
 
 include(FetchContent)
@@ -31,7 +31,7 @@ add_executable(RockPaperScissors ${SOURCE_FILES})
 
 add_library(game_logic
     src/GameEngine.cpp
-    src/Move.cpp
+    src/Player.cpp
 )
 
 target_include_directories(game_logic PRIVATE include)
