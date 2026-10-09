@@ -10,13 +10,29 @@ set(SOURCE_FILES
     src/main.cpp
     src/Move.cpp
 )
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/refs/tags/v1.15.2.tar.gz
 )
+
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
+enable_testing()
+
+include(CTest)
+
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
 
 add_executable(RockPaperScissors ${SOURCE_FILES})
+
+add_library(game_logic
+    src/GameEngine.cpp
+    src/Move.cpp
+)
+
+target_include_directories(game_logic PRIVATE include)
 target_include_directories(RockPaperScissors PRIVATE include)

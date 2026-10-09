@@ -1,3 +1,4 @@
+#pragma once
 class Game{
     int rounds;
     public:

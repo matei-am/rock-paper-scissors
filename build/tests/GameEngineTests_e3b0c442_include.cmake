@@ -1,0 +1,5 @@
+if(EXISTS "/Users/matei_a.m/Documents/Work/Rock-Paper-Scissors/rock-paper-scissors/build/tests/GameEngineTests_e3b0c442_tests.cmake")
+  include("/Users/matei_a.m/Documents/Work/Rock-Paper-Scissors/rock-paper-scissors/build/tests/GameEngineTests_e3b0c442_tests.cmake")
+else()
+  add_test(GameEngineTests_NOT_BUILT GameEngineTests_NOT_BUILT)
+endif()

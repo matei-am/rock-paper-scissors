@@ -1,3 +1,5 @@
+#pragma once
+#include "Move.h"
 class Player{
     int winCount=0;
     int loseCount=0;

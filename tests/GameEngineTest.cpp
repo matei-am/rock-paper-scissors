@@ -1,7 +1,7 @@
+#include <gtest/gtest.h>
 #include "GameEngine.h"
 #include "Player.h"
 #include "Move.h"
-#include <gtest/gtest.h>
 
 TEST(PlayerTest, AddWinIncrementsWinCount) {
     Player player;
