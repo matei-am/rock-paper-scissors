@@ -22,12 +22,12 @@ Move Human::getMove() const
         cout << "Invalid move. Please try again." << endl;
     }
 }
-void Human::setUserName(const string &userName)
+void Human::setName(const string &userName)
 {
     name = userName;
 }
 
-string Human::getUserName() const
+string Human::getName() const
 {
     return name;
 }

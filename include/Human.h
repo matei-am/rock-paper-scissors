@@ -9,6 +9,6 @@ private:
 
 public:
     Move getMove() const override;
-    std::string getUserName() const override;
-    void setUserName(const std::string &userName) override;
+    std::string getName() const override;
+    void setName(const std::string &userName) override;
 };

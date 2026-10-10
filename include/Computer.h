@@ -5,6 +5,7 @@
 class Computer : public Player
 {
 public:
-    Move getMove() override;
-    std::string getName() override;
+    Move getMove() const override;
+    std::string getName() const override;
+    void setName(const std::string &userName) override;
 };
