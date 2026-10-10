@@ -4,10 +4,12 @@ enum class Move {
     PAPER,
     SCISSORS
 };
-
 enum class outcome {
     WIN,
-    LOSE,
+    LOSS,
     DRAW
 };
 
+namespace Rules {
+    outcome determineOutcome(Move playerMove, Move opponentMove);
+}

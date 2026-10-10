@@ -4,14 +4,13 @@
     
     {
       "name": "Run RockPaperScissors (terminal)",
-      "type": "cppdbg",
+      "type": "cppvsdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/RockPaperScissors",
+      "program": "${workspaceFolder}/build/Debug/RockPaperScissors.exe",
       "args": [],
       "cwd": "${workspaceFolder}",
       "stopAtEntry": false,
-      "externalConsole": true,
-      "MIMode": "lldb",
+      "console": "externalTerminal",
       "preLaunchTask": "build"
     }
   ]

@@ -21,4 +21,9 @@ Move Computer::getMove()
         cout << "Computer chose SCISSORS" << endl;
         return Move::SCISSORS;
     }
-};
+}
+
+string Computer::getName()
+{
+    return "Computer";
+}

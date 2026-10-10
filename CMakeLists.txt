@@ -7,6 +7,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(SOURCE_FILES
     src/GameEngine.cpp
+    src/GameRules.cpp
     src/main.cpp
     src/Player.cpp
     src/Human.cpp
@@ -33,6 +34,7 @@ add_executable(RockPaperScissors ${SOURCE_FILES})
 
 add_library(game_logic
     src/GameEngine.cpp
+    src/GameRules.cpp
     src/Player.cpp
 )
 

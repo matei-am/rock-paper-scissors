@@ -1,4 +1,5 @@
 #include "Human.h"
+#include "Player.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -20,4 +21,12 @@ Move Human::getMove()
 
         cout << "Invalid move. Please try again." << endl;
     }
+}
+
+string Human::getName()
+{
+    string name;
+    cout << "Please enter your name: ";
+    cin >> name;
+    return name;
 }

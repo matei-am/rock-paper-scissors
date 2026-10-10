@@ -1,5 +1,7 @@
 #pragma once
-#include "Move.h"
+#include <string>
+#include "GameRules.h"
+
 class Player
 {
     int winCount = 0;
@@ -14,5 +16,6 @@ public:
     int getLoseCount();
     int getDrawCount();
     virtual Move getMove() = 0;
+    virtual std::string getName() = 0;
     virtual ~Player() = default;
 };

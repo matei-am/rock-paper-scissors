@@ -1,4 +1,4 @@
-#include "Move.h"
+#include "GameRules.h"
 #include "GameEngine.h"
 #include "Player.h"
 #include "Human.h"
