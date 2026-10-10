@@ -57,7 +57,7 @@ int Player::getDrawCount()
 }
 void Game::displayGameStats(Player& player1, Player& player2)
 {   
-    cout << "⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇" << endl;
+    cout << "---------------------------------" << endl;
     Player& winner = (player1.getWinCount() > player2.getWinCount()) ? player1 : player2;
     if(player1.getWinCount() == player2.getWinCount())
     {
