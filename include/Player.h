@@ -1,19 +1,18 @@
 #pragma once
 #include "Move.h"
-class Player{
-    int winCount=0;
-    int loseCount=0;
-    int drawCount=0;
+class Player
+{
+    int winCount = 0;
+    int loseCount = 0;
+    int drawCount = 0;
 
-    public:
+public:
     void addWin();
     void addLose();
     void addDraw();
-    void displayStats();
-    void ResetStats();
     int getWinCount();
     int getLoseCount();
     int getDrawCount();
-    Move getPlayerMove();
-    Move getComputerMove();
+    virtual Move getMove() = 0;
+    virtual ~Player() = default;
 };

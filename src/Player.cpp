@@ -4,66 +4,28 @@
 #include "GameEngine.h"
 using namespace std;
 
-Move Player::getPlayerMove()
-{
-    string input;
-    cout << "Please enter your move (rock, paper, or scissors): ";
-    cin >> input;
 
-    if (input == "rock")
+void Game::determineRoundResult(Player& player1, Player& player2, Move player1Move, Move player2Move)
+{
+    if (player1Move == player2Move)
     {
-        return Move::ROCK;
+        player1.addDraw();
+        player2.addDraw();
+        cout << "It's a draw!" << endl;
     }
-    else if (input == "paper")
+    else if ((player1Move == Move::ROCK && player2Move == Move::SCISSORS) ||
+             (player1Move == Move::PAPER && player2Move == Move::ROCK) ||
+             (player1Move == Move::SCISSORS && player2Move == Move::PAPER))
     {
-        return Move::PAPER;
-    }
-    else if (input == "scissors")
-    {
-        return Move::SCISSORS;
+        player1.addWin();
+        player2.addLose();
+        cout << "Player 1 wins this round!" << endl;
     }
     else
     {
-        cout << "Invalid move. Please try again." << endl;
-        return getPlayerMove();
-    }
-}
-
-Move Player::getComputerMove()
-{
-    int randomNum = rand() % 3;
-    if (randomNum == 0)
-    {
-        cout<< "Computer chose ROCK"<<endl;
-        return Move::ROCK;
-    }
-    else if (randomNum == 1)
-    {
-        cout << "Computer chose PAPER" << endl;
-        return Move::PAPER;
-    }
-    else
-    {
-        cout << "Computer chose SCISSORS" << endl;
-        return Move::SCISSORS;
-    }
-}
-
-outcome Result::determineResult(Move playerMove, Move computerMove)
-{
-    if (playerMove == computerMove)
-    {
-        return outcome::DRAW;
-    }
-    else if ((playerMove == Move::ROCK && computerMove == Move::SCISSORS) ||
-             (playerMove == Move::PAPER && computerMove == Move::ROCK) ||
-             (playerMove == Move::SCISSORS && computerMove == Move::PAPER))
-    {
-        return outcome::WIN;
-    }
-    else
-    {
-        return outcome::LOSE;
+        player1.addLose();
+        player2.addWin();
+        cout << "Player 2 wins this round!" << endl;
     }
 }
 
@@ -93,26 +55,37 @@ int Player::getDrawCount()
 {
     return drawCount;
 }
-void Player::displayStats()
-{
-    cout << "You have " << winCount << " Wins" << endl;
-    cout << "You have " << loseCount << " Losses" << endl;
-    cout << "You have " << drawCount << " Draws" << endl;
-}
-void Player::ResetStats()
-{
-    winCount = 0;
-    loseCount = 0;
-    drawCount = 0;
+void Game::displayGameStats(Player& player1, Player& player2)
+{   
+    cout << "⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇" << endl;
+    Player& winner = (player1.getWinCount() > player2.getWinCount()) ? player1 : player2;
+    if(player1.getWinCount() == player2.getWinCount())
+    {
+        cout << "It's a tie!" << endl;
+    }
+    else
+    {
+        cout << "Winner: " << ((&winner == &player1) ? "Player 1" : "Player 2") << endl;
+    }
+    cout << "---------------------------------" << endl;
+    cout<< "out of " << (player1.getWinCount() + player1.getLoseCount() + player1.getDrawCount()) << " rounds:" << endl;
+    cout << "Player 1 has " << player1.getWinCount() << " Wins" << endl;
+    cout << "Player 1 has " << player1.getLoseCount() << " Losses" << endl;
+    cout << "Player 1 has " << player1.getDrawCount() << " Draws" << endl;
+    cout << "Player 2 has " << player2.getWinCount() << " Wins" << endl;
+    cout << "Player 2 has " << player2.getLoseCount() << " Losses" << endl;
+    cout << "Player 2 has " << player2.getDrawCount() << " Draws" << endl;
+    cout << "---------------------------------" << endl;
 }
 
-void Result::displayResult(outcome gameResult)
+
+void Game::displayRoundResult(outcome roundResult)
 {
-    if (gameResult == outcome::WIN)
+    if (roundResult == outcome::WIN)
     {
         cout << "You win!" << endl;
     }
-    else if (gameResult == outcome::LOSE)
+    else if (roundResult == outcome::LOSE)
     {
         cout << "You lose!" << endl;
     }

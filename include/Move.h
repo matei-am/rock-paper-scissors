@@ -11,8 +11,3 @@ enum class outcome {
     DRAW
 };
 
-class Result{
-    public:
-    outcome determineResult(Move playerMove, Move computerMove);
-    void displayResult(outcome gameResult);
-};

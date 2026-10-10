@@ -9,6 +9,8 @@ set(SOURCE_FILES
     src/GameEngine.cpp
     src/main.cpp
     src/Player.cpp
+    src/Human.cpp
+    src/Computer.cpp
 )
 
 include(FetchContent)
