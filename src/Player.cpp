@@ -1,7 +1,5 @@
 #include <iostream>
-#include "GameRules.h"
 #include "Player.h"
-#include "GameEngine.h"
 using namespace std;
 
 
@@ -11,25 +9,25 @@ void Player::addWin()
 {
     winCount++;
 }
-void Player::addLose()
+void Player::addLoss()
 {
-    loseCount++;
+    lossCount++;
 }
 void Player::addDraw()
 {
     drawCount++;
 }
-int Player::getWinCount()
+int Player::getWinCount() const
 {
     return winCount;
 }
 
-int Player::getLoseCount()
+int Player::getLossCount() const
 {
-    return loseCount;
+    return lossCount;
 }
 
-int Player::getDrawCount()
+int Player::getDrawCount() const
 {
     return drawCount;
 }

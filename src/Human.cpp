@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-Move Human::getMove()
+Move Human::getMove() const
 {
     string input;
     while (true)
@@ -22,11 +22,12 @@ Move Human::getMove()
         cout << "Invalid move. Please try again." << endl;
     }
 }
-
-string Human::getName()
+void Human::setUserName(const string &userName)
 {
-    string name;
-    cout << "Please enter your name: ";
-    cin >> name;
+    name = userName;
+}
+
+string Human::getUserName() const
+{
     return name;
 }

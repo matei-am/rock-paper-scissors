@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GameRules.h"
 #include "GameEngine.h"
 #include "Player.h"
@@ -10,6 +11,10 @@ int main() {
     Player& player1 = human;
     Player& player2 = computer;
     Game game;
+    std::string userName;
+    std::cout << "Please enter your name: ";
+    std::cin >> userName;
+    human.setUserName(userName);
     game.startGame(player1, player2);
     game.playGame(player1, player2);
 

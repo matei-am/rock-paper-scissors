@@ -27,27 +27,4 @@ namespace Rules
     }
 }
 
-void Game::determineRoundResult(Player &player1, Player &player2)
-{
-    Move player1Move = player1.getMove();
-    Move player2Move = player2.getMove();
-    outcome roundResult = Rules::determineOutcome(player1Move, player2Move);
-    if (roundResult == outcome::DRAW)
-    {
-        player1.addDraw();
-        player2.addDraw();
-        cout << "It's a draw!" << endl;
-    }
-    else if (roundResult == outcome::WIN)
-    {
-        player1.addWin();
-        player2.addLose();
-        cout << "Player 1 wins this round!" << endl;
-    }
-    else
-    {
-        player1.addLose();
-        player2.addWin();
-        cout << "Player 2 wins this round!" << endl;
-    }
-}
+

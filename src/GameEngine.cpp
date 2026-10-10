@@ -8,45 +8,6 @@
 #include "Computer.h"
 using namespace std;
 
-void Game::displayRoundResult(outcome roundResult)
-{
-    if (roundResult == outcome::WIN)
-    {
-        cout << "You win!" << endl;
-    }
-    else if (roundResult == outcome::LOSS)
-    {
-        cout << "You lose!" << endl;
-    }
-    else
-        cout << "It's a draw!" << endl;
-}
-
-void Game::displayGameStats(Player &player1, Player &player2)
-{
-    string player1Name = player1.getName();
-    string player2Name = player2.getName();
-    cout << "---------------------------------" << endl;
-    Player &winner = (player1.getWinCount() > player2.getWinCount()) ? player1 : player2;
-    if (player1.getWinCount() == player2.getWinCount())
-    {
-        cout << "It's a tie!" << endl;
-    }
-    else
-    {
-        cout << "Winner: " << ((&winner == &player1) ? player1Name : player2Name) << endl;
-    }
-    cout << "---------------------------------" << endl;
-    cout << "Out of " << (player1.getWinCount() + player1.getLoseCount() + player1.getDrawCount()) << " rounds:" << endl;
-    cout << player1Name << " has " << player1.getWinCount() << " Wins" << endl;
-    cout << player1Name << " has " << player1.getLoseCount() << " Losses" << endl;
-    cout << player1Name << " has " << player1.getDrawCount() << " Draws" << endl;
-    cout << player2Name << " has " << player2.getWinCount() << " Wins" << endl;
-    cout << player2Name << " has " << player2.getLoseCount() << " Losses" << endl;
-    cout << player2Name << " has " << player2.getDrawCount() << " Draws" << endl;
-    cout << "---------------------------------" << endl;
-}
-
 void Game::startGame(Player &player1, Player &player2)
 {
     cout << "Welcome to Rock, Paper, Scissors!" << endl;
@@ -74,10 +35,63 @@ void Game::playRound(Player &player1, Player &player2)
 
 void Game::playGame(Player &player1, Player &player2)
 {
-    while (rounds)
+    for (int round = 0; round < rounds; ++round)
     {
         playRound(player1, player2);
-        rounds--;
     }
     this->displayGameStats(player1, player2);
+}
+void Game::determineRoundResult(Player &player1, Player &player2)
+{
+    Move player1Move = player1.getMove();
+    Move player2Move = player2.getMove();
+    outcome roundResult = Rules::determineOutcome(player1Move, player2Move);
+    displayRoundResult(roundResult, player1, player2);
+}
+
+void Game::displayRoundResult(outcome roundResult, Player &player1, Player &player2)
+{
+    if (roundResult == outcome::DRAW)
+    {
+        player1.addDraw();
+        player2.addDraw();
+        cout << "It's a draw!" << endl;
+    }
+    else if (roundResult == outcome::WIN)
+    {
+        player1.addWin();
+        player2.addLose();
+        cout << "Player 1 wins this round!" << endl;
+    }
+    else
+    {
+        player1.addLose();
+        player2.addWin();
+        cout << "Player 2 wins this round!" << endl;
+    }
+}
+
+void Game::displayGameStats(Player &player1, Player &player2)
+{
+    string player1Name = player1.getName();
+    string player2Name = player2.getName();
+    cout << "---------------------------------" << endl;
+    Player &winner = (player1.getWinCount() > player2.getWinCount()) ? player1 : player2;
+    if (player1.getWinCount() == player2.getWinCount())
+    {
+        cout << "It's a tie!" << endl;
+    }
+    else
+    {
+        cout << "Winner: " << ((&winner == &player1) ? player1Name : player2Name) << endl;
+    }
+    cout << "---------------------------------" << endl;
+    cout << "Out of " << (player1.getWinCount() + player1.getLoseCount() + player1.getDrawCount()) << " rounds:" << endl;
+    cout << player1Name << " has " << player1.getWinCount() << " Wins" << endl;
+    cout << player1Name << " has " << player1.getLoseCount() << " Losses" << endl;
+    cout << player1Name << " has " << player1.getDrawCount() << " Draws" << endl;
+    cout << player2Name << " has " << player2.getWinCount() << " Wins" << endl;
+    cout << player2Name << " has " << player2.getLoseCount() << " Losses" << endl;
+    cout << player2Name << " has " << player2.getDrawCount() << " Draws" << endl;
+    cout << "---------------------------------" << endl;
 }

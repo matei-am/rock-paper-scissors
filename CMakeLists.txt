@@ -36,6 +36,8 @@ add_library(game_logic
     src/GameEngine.cpp
     src/GameRules.cpp
     src/Player.cpp
+    src/Human.cpp
+    src/Computer.cpp
 )
 
 target_include_directories(game_logic PRIVATE include)
