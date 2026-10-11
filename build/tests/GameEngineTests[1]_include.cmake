@@ -1,5 +1,0 @@
-if(EXISTS "Z:/Rock Paper Scissors/rock-paper-scissors/build/tests/GameEngineTests[1]_tests.cmake")
-  include("Z:/Rock Paper Scissors/rock-paper-scissors/build/tests/GameEngineTests[1]_tests.cmake")
-else()
-  add_test(GameEngineTests_NOT_BUILT GameEngineTests_NOT_BUILT)
-endif()
