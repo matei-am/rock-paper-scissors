@@ -4,8 +4,6 @@
 #include "GameEngine.h"
 #include "GameRules.h"
 #include "Player.h"
-#include "Human.h"
-#include "Computer.h"
 using namespace std;
 
 void Game::startGame()

@@ -1,6 +1,4 @@
-#include <iostream>
 #include "GameRules.h"
-#include "GameEngine.h"
 using namespace std;
 namespace Rules
 {
