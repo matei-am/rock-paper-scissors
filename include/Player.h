@@ -15,8 +15,7 @@ public:
     int getWinCount() const;
     int getLossCount() const;
     int getDrawCount() const;
-    virtual Move getMove() const = 0;
-    virtual void setName(const std::string &userName) = 0;
+    virtual Move getMove() = 0;
     virtual std::string getName() const = 0;
     virtual ~Player() = default;
 };

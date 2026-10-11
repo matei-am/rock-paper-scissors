@@ -8,7 +8,7 @@
 #include "Computer.h"
 using namespace std;
 
-void Game::startGame(Player &player1, Player &player2)
+void Game::startGame()
 {
     cout << "Welcome to Rock, Paper, Scissors!" << endl;
     cout << "How many rounds would you like to play? ";
@@ -47,30 +47,39 @@ void Game::determineRoundResult(Player &player1, Player &player2)
     Move player2Move = player2.getMove();
     outcome roundResult = Rules::determineOutcome(player1Move, player2Move);
     displayRoundResult(roundResult, player1, player2);
+    if (roundResult == outcome::DRAW)
+    {
+        player1.addDraw();
+        player2.addDraw();
+    }
+    else if (roundResult == outcome::WIN)
+    {
+        player1.addWin();
+        player2.addLoss();
+    }
+    else
+    {
+        player1.addLoss();
+        player2.addWin();
+    }
 }
 
 void Game::displayRoundResult(outcome roundResult, Player &player1, Player &player2)
 {
     if (roundResult == outcome::DRAW)
     {
-        player1.addDraw();
-        player2.addDraw();
         cout << endl;
         cout << "It's a draw!" << endl;
         cout << endl;
     }
     else if (roundResult == outcome::WIN)
     {
-        player1.addWin();
-        player2.addLoss();
         cout << endl;
         cout << player1.getName() << " wins this round!" << endl;
         cout << endl;
     }
     else
     {
-        player1.addLoss();
-        player2.addWin();
         cout << endl;
         cout << player2.getName() << " wins this round!" << endl;
         cout << endl;

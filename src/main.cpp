@@ -19,7 +19,7 @@ int main() {
     cin >> userName;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     human.setName(userName);
-    game.startGame(player1, player2);
+    game.startGame();
     game.playGame(player1, player2);
 
     return 0;

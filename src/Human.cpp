@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-Move Human::getMove() const
+Move Human::getMove() 
 {
     string input;
     while (true)

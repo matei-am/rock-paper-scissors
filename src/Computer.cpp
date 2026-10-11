@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Move Computer::getMove() const
+Move Computer::getMove() 
 {
     int randomNum = rand() % 3;
     if (randomNum == 0)
@@ -25,11 +25,7 @@ Move Computer::getMove() const
         return Move::SCISSORS;
     }
 }
-void Computer::setName(const std::string &userName)
-{
-    string name;
-    name = "Computer";
-}
+
 string Computer::getName() const
 {
     return "Computer";

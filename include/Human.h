@@ -8,7 +8,7 @@ private:
     std::string name;
 
 public:
-    Move getMove() const override;
+    Move getMove() override;
     std::string getName() const override;
-    void setName(const std::string &userName) override;
+    void setName(const std::string &userName);
 };

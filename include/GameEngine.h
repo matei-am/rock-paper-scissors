@@ -1,9 +1,9 @@
 #pragma once
 #include "Player.h"
 class Game{
-    int rounds;
+    int rounds = 0;
     public:
-    void startGame(Player& player1, Player& player2);
+    void startGame();
     void playRound(Player& player1, Player& player2);
     void playGame(Player& player1, Player& player2);
     void determineRoundResult(Player& player1, Player& player2);
