@@ -1,31 +1,38 @@
 #include <gtest/gtest.h>
 #include "Player.h"
+#include "TestPlayer.h"
+#include "TestComputer.h"
+#include "Computer.h"
+#include "HumanTestPlayer.h"
+#include "Human.h"
 using namespace std;
 
-class TestPlayer : public Player
+
+Move TestPlayer::getMove()
 {
-public:
-    Move getMove() override
-    {
-        return Move::ROCK;
-    }
-    string getName() const override
-    {
-        return "Test Player";
-    }
-};
-class AnotherTestPlayer : public Player
+    return Move::ROCK;
+}
+string TestPlayer::getName() const
 {
-public:
-    Move getMove() override
-    {
-        return Move::PAPER;
-    }
-    string getName() const override
-    {
-        return "Test Player 2";
-    }
-};
+    return "Test Player";
+}
+Move TestComputer::getMove()
+{
+    return move;
+}
+string TestComputer::getName() const
+{
+    return "Computer";
+}
+Move HumanTestPlayer::getMove()
+{
+    return move;
+}
+string HumanTestPlayer::getName() const
+{
+    return name;
+}
+
 
 TEST(PlayerTests, ScoreStartsAtZero)
 {
@@ -93,8 +100,100 @@ TEST(PlayerTests, GetNameReturnsCorrectName)
 
 TEST(PlayerTests, DifferentPlayersHaveDifferentNames)
 {
-    TestPlayer player1;
-    AnotherTestPlayer player2;
+    HumanTestPlayer player1("Test Player", Move::ROCK);
+    HumanTestPlayer player2("Test Player 2", Move::PAPER);
     EXPECT_EQ(player1.getName(), "Test Player");
     EXPECT_EQ(player2.getName(), "Test Player 2");
+}
+
+TEST(PlayerTests, ComputerPlayerReturnsRandomMove)
+{
+    Computer computer;
+
+    Move move = computer.getMove();
+
+    EXPECT_TRUE(
+        move == Move::ROCK ||
+        move == Move::PAPER ||
+        move == Move::SCISSORS
+    );
+}
+
+TEST(PlayerTests, OutputMatchesReturnedMove)
+{
+    Computer computer;
+
+    testing::internal::CaptureStdout();
+
+    Move move = computer.getMove();
+
+    string output = testing::internal::GetCapturedStdout();
+
+    if (move == Move::ROCK)
+    {
+        EXPECT_NE(output.find("Computer chose ROCK"), string::npos);
+    }
+    else if (move == Move::PAPER)
+    {
+        EXPECT_NE(output.find("Computer chose PAPER"), string::npos);
+    }
+    else if (move == Move::SCISSORS)
+    {
+        EXPECT_NE(output.find("Computer chose SCISSORS"), string::npos);
+    }
+}
+
+TEST(PlayerTests, ComputerPlayerReturnsCorrectName)
+{
+    Computer computer;
+    EXPECT_EQ(computer.getName(), "Computer");
+}
+
+TEST(PlayerTests, HumanSetsNameCorrectly)
+{
+    Human human;
+    human.setName("Test Human");
+    EXPECT_EQ(human.getName(), "Test Human");
+}
+
+TEST(HumanTest, ReturnsRock)
+{
+    Human human;
+
+    istringstream input("rock\n");
+    streambuf* originalInput = cin.rdbuf(input.rdbuf());
+
+    Move move = human.getMove();
+
+    cin.rdbuf(originalInput);
+
+    EXPECT_EQ(move, Move::ROCK);
+}
+
+TEST(HumanTest, ReturnsPaper)
+{
+    Human human;
+
+    istringstream input("paper\n");
+    streambuf* originalInput = cin.rdbuf(input.rdbuf());
+
+    Move move = human.getMove();
+
+    cin.rdbuf(originalInput);
+
+    EXPECT_EQ(move, Move::PAPER);
+}
+
+TEST(HumanTest, ReturnsScissors)
+{
+    Human human;
+
+    istringstream input("scissors\n");
+    streambuf* originalInput = cin.rdbuf(input.rdbuf());
+
+    Move move = human.getMove();
+
+    cin.rdbuf(originalInput);
+
+    EXPECT_EQ(move, Move::SCISSORS);
 }

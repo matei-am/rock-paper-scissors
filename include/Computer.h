@@ -6,5 +6,5 @@ class Computer : public Player
 {
 public:
     Move getMove() override;
-    std::string getName() const override;
+    string getName() const override;
 };

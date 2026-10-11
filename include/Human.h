@@ -5,10 +5,10 @@
 class Human : public Player
 {
 private:
-    std::string name;
+    string name;
 
 public:
     Move getMove() override;
-    std::string getName() const override;
-    void setName(const std::string &userName);
+    string getName() const override;
+    void setName(const string &userName);
 };

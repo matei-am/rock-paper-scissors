@@ -16,6 +16,7 @@ add_library(game_logic
     src/Player.cpp
     src/Human.cpp
     src/Computer.cpp
+    src/RunGame.cpp
 )
 
 target_include_directories(game_logic
