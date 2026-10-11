@@ -44,7 +44,6 @@ void Game::determineRoundResult(Player &player1, Player &player2)
     Move player1Move = player1.getMove();
     Move player2Move = player2.getMove();
     outcome roundResult = Rules::determineOutcome(player1Move, player2Move);
-    displayRoundResult(roundResult, player1, player2);
     if (roundResult == outcome::DRAW)
     {
         player1.addDraw();
@@ -60,6 +59,7 @@ void Game::determineRoundResult(Player &player1, Player &player2)
         player1.addLoss();
         player2.addWin();
     }
+    displayRoundResult(roundResult, player1, player2);
 }
 
 void Game::displayRoundResult(outcome roundResult, Player &player1, Player &player2)
