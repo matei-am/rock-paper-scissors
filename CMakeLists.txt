@@ -34,6 +34,13 @@ target_link_libraries(RockPaperScissors
 )
 
 # Testing
+
+option(ENABLE_COVERAGE "Enable gcov coverage" OFF)
+if(ENABLE_COVERAGE)
+    target_compile_options(game_logic PUBLIC --coverage -O0 -g)
+    target_link_options(game_logic PUBLIC --coverage)
+endif()
+
 include(CTest)
 
 if(BUILD_TESTING)

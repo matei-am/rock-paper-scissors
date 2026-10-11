@@ -1,6 +1,8 @@
 
 add_executable(GameEngineTests
     GameEngineTest.cpp
+    GameRulesTests.cpp
+    PlayerTests.cpp
 )
 
 target_link_libraries(GameEngineTests

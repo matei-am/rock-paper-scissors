@@ -9,7 +9,6 @@ using namespace std;
 void Game::startGame()
 {
     cout << "Welcome to Rock, Paper, Scissors!" << endl;
-    cout << "How many rounds would you like to play? ";
     string input;
 
     while (true)
@@ -27,19 +26,6 @@ void Game::startGame()
     }
 }
 void Game::playRound(Player &player1, Player &player2)
-{
-    this->determineRoundResult(player1, player2);
-}
-
-void Game::playGame(Player &player1, Player &player2)
-{
-    for (int round = 0; round < rounds; ++round)
-    {
-        playRound(player1, player2);
-    }
-    this->displayGameStats(player1, player2);
-}
-void Game::determineRoundResult(Player &player1, Player &player2)
 {
     Move player1Move = player1.getMove();
     Move player2Move = player2.getMove();
@@ -61,6 +47,16 @@ void Game::determineRoundResult(Player &player1, Player &player2)
     }
     displayRoundResult(roundResult, player1, player2);
 }
+
+void Game::playGame(Player &player1, Player &player2)
+{
+    for (int round = 0; round < rounds; ++round)
+    {
+        playRound(player1, player2);
+    }
+    this->displayGameStats(player1, player2);
+}
+
 
 void Game::displayRoundResult(outcome roundResult, Player &player1, Player &player2)
 {
@@ -89,13 +85,13 @@ void Game::displayGameStats(Player &player1, Player &player2)
     string player1Name = player1.getName();
     string player2Name = player2.getName();
     cout << "---------------------------------" << endl;
-    Player &winner = (player1.getWinCount() > player2.getWinCount()) ? player1 : player2;
     if (player1.getWinCount() == player2.getWinCount())
     {
         cout << "It's a tie!" << endl;
     }
     else
     {
+        Player &winner = (player1.getWinCount() > player2.getWinCount()) ? player1 : player2;
         cout << "Winner: " << ((&winner == &player1) ? player1Name : player2Name) << endl;
     }
     cout << "---------------------------------" << endl;

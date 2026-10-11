@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "GameRules.h"
+using namespace std;
 
 class Player
 {
@@ -16,6 +17,6 @@ public:
     int getLossCount() const;
     int getDrawCount() const;
     virtual Move getMove() = 0;
-    virtual std::string getName() const = 0;
+    virtual string getName() const = 0;
     virtual ~Player() = default;
 };
